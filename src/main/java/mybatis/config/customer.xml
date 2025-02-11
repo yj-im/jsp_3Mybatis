@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tblcustomer">
+	<!-- select 는 반드시 resultType 필수 : 대부분 VO
+		 select 는 parameterType 은 where 조건식에 따라서 결정
+		 insert, update, delete 는 parameterType 필수 입니다. 
+		 insert, update, delete 는 resultType 없음.
+		 insert, update 는 parameterType 이 대부분 VO 입니다. (delete 는 예외)
+	 -->
+	<select id="selectByPk" parameterType="String" resultType="CustomerVo">
+		select * from tbl_customer where custom_id=#{customId}
+	</select>
+
+
+
+	<!-- 리턴타입이 List 일때에는 제너틱타입만 설정하면 됩니다. -->
+	<select id="selectAll" resultType="CustomerVo">
+		select * from tbl_custom order by custom_id
+	</select>
+	<!--  insert, update, delete 는 리턴타입  지정안합니다.(그래도 값은 리턴해 줍니다.) -->
+	<insert id="insert" parameterType="CustomerVo">
+		insert into tbl_custom(custom_id,name,email,age,reg_date) 
+                    values (#{customId}, #{name}, #{email}, #{age}, sysdate)
+	</insert>
+	<update id="update" parameterType="CustomerVo">
+		update tbl_custom 
+		set email = #{email}, age = #{age} 
+		where custom_id = #{customId}
+	</update>
+	<delete id="delete" parameterType="String">
+		delete from tbl_custom 
+			where custom_id = #{customId}
+	</delete>
+
+
+</mapper>  
+
+
+
+

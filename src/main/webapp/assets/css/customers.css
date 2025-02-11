@@ -1,0 +1,29 @@
+* {	box-sizing: border-box;  margin :0;  padding :0;  }
+body { 	padding: 1rem; }
+.content , h3 { margin-left : 3rem; padding-left :1rem; }
+h3 { 	padding : 1rem; }
+ul { 	list-style: none;  	width : 65rem; }
+/* forEach 안에 있는 ul의 class 이름이 row 입니다. */
+ul .row { display: flex; }
+ul .row > li {
+	padding: 0.5rem  0.02rem;
+	/* 컬럼(열)에 해당하는 li는 너비를 15rem으로 통일 */
+	width : 15rem;
+	border-bottom : 1px  dashed gray;
+}
+/* 첫번째 번호 컬럼은 너비를 15에서 2로 변경 */
+.row > li:first-child { width : 2rem; }
+/* 세번째 이름 컬럼은 너비를 15에서 10으로 변경 */
+.row > li:nth-child(3) { width : 10rem; }
+select,input {
+   padding: 0.5rem  0.02rem;
+   width : 12rem;
+}
+button {
+   padding: 0.4rem  0.02rem;
+   width : 8rem; 
+}
+.search {
+   padding: 0.5rem  0.02rem;
+}
+ul#list {padding:2rem;}
