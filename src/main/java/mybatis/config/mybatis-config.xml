@@ -10,14 +10,12 @@
 <configuration>  
   <!--  datasource 태그 안에 4개의 프로퍼티값이 저장된 파일 
   		: 파일 위치한 패키지이름을 파일시스템 디렉토리형식(/)으로 작성-->
-  <properties resource="mybatis/db.properties"/>
+  <properties resource="mybatis/config/db.properties"/>
   
   <!-- 타입 별칭 설정하기 -->
   <typeAliases>
-  		<typeAlias type="day4.mybatis.dto.BuyDto" alias="BuyDto"/>
-  		<typeAlias type="day4.mybatis.dto.ProductDto" alias="ProductDto"/>
-  		<typeAlias type="day4.mybatis.dto.CustomerDto" alias="CustomerDto"/>
-  		<typeAlias type="day4.mybatis.dto.CustomerBuyDto" alias="CustomerBuyDto"/>
+  		
+  		<typeAlias type="mybatis.vo.CustomerVo" alias="CustomerVo"/>
   </typeAliases>
   
   <!--  jdbc 의 db 연결정보 -->
@@ -43,9 +41,8 @@
   <mappers>
     <!-- JDBC로 처리하는 상당부분의 코드와 파라미터 설정 및 조회결과와 dto(vo)객체 매핑을 해줍니다. -->
   	<!-- 실행할 SQL 쿼리 저장한 파일. mapper파일위치와 파일명 오류나지 않도록 확인!! 테이블컬럼과 자바객체 변수(프로퍼티) 를 바로 매핑. -->
-    <mapper resource="mybatis/buys.xml"/>
-    <mapper resource="mybatis/customer.xml"/>
-    <mapper resource="mybatis/product.xml"/>
+   
+    <mapper resource="mybatis/config/customer.xml"/>
     <!-- resource 속성일 때 파일의 패키지명은 . 아니고 / 기호 사용합니다. 
     	 sql mapper 파일은 여러개 사용될 수 있습니다. -->
   </mappers>

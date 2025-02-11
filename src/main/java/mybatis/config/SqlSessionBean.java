@@ -25,7 +25,7 @@ public class SqlSessionBean {
 	public static SqlSessionFactory sqlSessionFactory;
 	//static 블럭{} : static 변수를 대상으로 실행하는 코드 모아놓았습니다.
 	static {   //변수들이 static 영역에 저장됩니다. why: sqlSessionFactory 를 static으로 만들기 위함.
-		String resource = "mybatis/mybatis-config.xml";    //mybatis 설정파일
+		String resource = "mybatis/config/mybatis-config.xml";    //mybatis 설정파일
 		//resource 변수에 지정된 파일을 읽기위한 입력 스트림 선언
 		InputStream inputStream=null;			
 	
