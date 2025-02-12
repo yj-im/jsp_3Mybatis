@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tblproduct">
+	<!-- select 는 반드시 resultType 필수 : 대부분 VO
+		 select 는 parameterType 은 where 조건식에 따라서 결정
+		 insert, update, delete 는 parameterType 필수 입니다. 
+		 insert, update, delete 는 resultType 없음.
+		 insert, update 는 parameterType 이 대부분 VO 입니다. (delete 는 예외)
+	 -->
+	<select id="selectByPk" parameterType="String" resultType="ProductVo">
+		select * from tbl_product where pcode=#{pcode}
+	</select>
+
+<!-- 리턴타입이 List 일때에는 제너틱타입만 설정하면 됩니다. -->
+	<select id="selectAll" resultType="ProductVo">
+		select * from tbl_product order by pcode
+	</select>
+	<!--  insert, update, delete 는 리턴타입  지정안합니다.(그래도 값은 리턴해 줍니다.) -->
+	<insert id="insert" parameterType="ProductVo">
+		insert into tbl_product(pcode,category,pname,price) 
+                    values (#{pcode}, #{category}, #{pname}, #{price})
+	</insert>
+	<update id="update" parameterType="ProductVo">
+		update tbl_product 
+		set pname = #{pname}, price = #{price} 
+		where pcode = #{pcode}
+	</update>
+	<delete id="delete" parameterType="String">
+		delete from tbl_product 
+			where pcode = #{pcode}
+	</delete>
+
+	<select id="selectByCategory" parameterType="ProductVo">
+		select * from tbl_product where category = #{category}
+	</select>
+
+</mapper>  
+
+
+
+

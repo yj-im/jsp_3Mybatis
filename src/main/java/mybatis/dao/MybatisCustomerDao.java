@@ -10,11 +10,20 @@ import mybatis.config.SqlSessionBean;
 import mybatis.vo.CustomerVo;
 
 public class MybatisCustomerDao {
-
+	// SqlSessionbean 클래스는 config 패키지에 있는 개발자 작성 클래스입니다.
 	private SqlSessionFactory sessionFactory = SqlSessionBean.getSessionFactory();
 	
 	public CustomerVo selectByPk(String customId) {
 		SqlSession sqlSession=sessionFactory.openSession();
+		
+		/*
+		 * 마이바티스의 SqlSession 객체가 SQL 을 실행합니다.
+		 * SQL 실행 메소드(CRUD 기본적인 dml 명령어 create, read, update, delete) : insert(), update(), delete() 메소드 데이터 조작(추가/삭제/변경)
+		 * 				   selectOne() 메소드는 select 조회 결과가 1개 행일때
+		 * 				   selectList() 메소드는 select 조회 결과가 여러개 행일때 구분해서 사용
+		 * 위 5개 메소드의 인자 : 문자열 -> 매퍼 XML의 네임스페이스.id 값
+		 * 					선택적인 두번째 인자 -> SQL 실행에 필요한 파라미터 값
+		 */
 		
 		// select SQL 조회 결과 행이 1개 : selectOne 메소드
 		// sql 에 매개변수(파라미터)가 있으면 두번째 인자로 전달
@@ -31,7 +40,7 @@ public class MybatisCustomerDao {
 		return list;
 	}
 	
-	// 마이바티스는 auto commit 이 아닙니다.(커밋 반드시 해줘라)
+	// mybatis는 auto commit 이 아닙니다.(commit 반드시 해줘라)
 	public int insert(CustomerVo vo) {
 		SqlSession sqlSession = sessionFactory.openSession();
 		
